@@ -1,0 +1,13 @@
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\bin\Debug\winform_SMS.exe.config
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\bin\Debug\winform_SMS.exe
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\bin\Debug\winform_SMS.pdb
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.csproj.AssemblyReference.cache
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.Form1.resources
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.Form2_1.resources
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.Form2.resources
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.Form3.resources
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.Properties.Resources.resources
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.csproj.GenerateResource.cache
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.exe
+\\Mac\Home\Documents\개인\winform_SMS_new\winform_SMS\winform_SMS\obj\Debug\winform_SMS.pdb

@@ -16,5 +16,11 @@ namespace winform_SMS
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 _Form2 = new Form2();
+            _Form2.ShowDialog();
+        }
     }
 }

@@ -38,11 +38,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -50,6 +50,8 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,9 +61,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 150);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(776, 250);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
             // label1
             // 
@@ -119,20 +123,22 @@
             this.button1.Font = new System.Drawing.Font("굴림", 11F);
             this.button1.Location = new System.Drawing.Point(301, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 60);
+            this.button1.Size = new System.Drawing.Size(100, 30);
             this.button1.TabIndex = 7;
-            this.button1.Text = "주소록\r\n추가";
+            this.button1.Text = "주소록 추가";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("굴림", 11F);
-            this.button2.Location = new System.Drawing.Point(301, 76);
+            this.button2.Location = new System.Drawing.Point(301, 114);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 60);
+            this.button2.Size = new System.Drawing.Size(100, 30);
             this.button2.TabIndex = 8;
-            this.button2.Text = "입력\r\n초기화";
+            this.button2.Text = "입력 초기화";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
@@ -148,16 +154,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "- 주소록 저장 방식";
             // 
-            // radioButton1
+            // button5
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(27, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(146, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "원격 저장소(Firebase)";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.button5.Location = new System.Drawing.Point(311, 13);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(64, 50);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "저장소\r\n불러오기\r\n";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(245, 13);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(60, 50);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "저장소\r\n저장";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(179, 13);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(60, 50);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "저장소\r\n리셋\r\n";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -170,32 +192,16 @@
             this.radioButton2.Text = "로컬 저장 방식(.txt)";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // radioButton1
             // 
-            this.button3.Location = new System.Drawing.Point(179, 13);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 50);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "저장소\r\n리셋\r\n";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(245, 13);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 50);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "저장소\r\n저장";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(311, 13);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(64, 50);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "저장소\r\n불러오기\r\n";
-            this.button5.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(27, 20);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(146, 16);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "원격 저장소(Firebase)";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -209,6 +215,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(85, 121);
             this.comboBox1.Name = "comboBox1";
@@ -224,6 +231,7 @@
             this.button6.TabIndex = 12;
             this.button6.Text = "그룹 설정";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -262,11 +270,34 @@
             this.button8.Text = "검색";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("굴림", 11F);
+            this.button9.Location = new System.Drawing.Point(301, 45);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(100, 30);
+            this.button9.TabIndex = 17;
+            this.button9.Text = "주소록 수정";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("굴림", 11F);
+            this.button10.Location = new System.Drawing.Point(301, 81);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(100, 30);
+            this.button10.TabIndex = 18;
+            this.button10.Text = "주소록 삭제";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label5);
@@ -286,6 +317,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -318,5 +350,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

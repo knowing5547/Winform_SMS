@@ -66,7 +66,7 @@ namespace winform_SMS
                 return false;
         }
 
-        // dataGridView1_CellMouseDoubleClick 에 넣을거
+        // dataGridView1_CellMouseDoubleClick 에 넣을거 (더블클릭시 값 옮기기)
         public void data_Selected()
         {
             int ID = dataGridView1.CurrentRow.Index;
@@ -84,6 +84,7 @@ namespace winform_SMS
                 if (M == 2)
                 {
                     string cb_Value = Convert.ToString(dt3_row[3]);
+
                     // k 반복을 3열(그룹) 부분에 돌려서 선택한 부분이랑 같은 걸 찾아내기
                     for (int k = 0; k < dt3.Rows.Count; k++)
                     {
@@ -93,7 +94,18 @@ namespace winform_SMS
                             // selectedText는 아예 안먹고, selectedIndex만 먹음
                             // selectedIndex는 기본 빈값이 -1이고, 0,1,2에서 점점 늘어나는 값을 가지고있기때문에
                             // 선택한 부분이랑 같은 행을 찾아서 넣어준것
-                            this.comboBox1.SelectedIndex = k;
+
+                            // k값이 아닌, '그룹'안의 순서를 파악해서 그 순서값을 넣어주어야 함 
+                            // dt2의 그룹명값을 가져와서 그룹명이랑 cb_Value이랑 비교해서 같으면
+                            // 그룹명값의 row를 어디에 저장해둬서 그 저장해둔값을 SelectedIndex에 넣으면 되려나??
+                            // 성공
+                            for (int p = 0; p < dt2.Rows.Count; p++)
+                            {
+                                if (cb_Value == dt2.Rows[p][1])
+                                {
+                                    this.comboBox1.SelectedIndex = p;
+                                }
+                            }
                         }
                     }
                 }
@@ -119,7 +131,7 @@ namespace winform_SMS
 
 
                 dt3.Rows.Add(row);
-                dataGridView1.DataSource = dt3;
+                dataGridView1_CurrentCellDirtyStateChanged(this, null);
 
                 this.textBox1.Text = "";
                 this.textBox2.Text = "";
@@ -136,15 +148,28 @@ namespace winform_SMS
         // 11/17_12:59 이어서하기
         private void button9_Click(object sender, EventArgs e)
         {
-            if (!(TextCheck() == true))
+            if (TextCheck() == true)
             {
-                DataRow dt3_row = dt3.Rows[ID_get];
+                // MessageBox.Show(""+ID_Get); // ID_Get 값 제대로 가져오나 테스트용
+
+                // 1. foreach로 
+                DataRow dt3_row = dt3.Rows[ID_Get];
                 dt3_row["이름"] = textBox1.Text;
                 dt3_row["전화번호"] = textBox2.Text;
                 dt3_row["이메일"] = textBox3.Text;
                 dt3_row["그룹"] = comboBox1.SelectedItem;
 
-                dt3.Rows.Add(dt3_row);
+                // 데이터 최신화
+                dataGridView1_CurrentCellDirtyStateChanged(this, null);
+
+                /*
+                DataTable dt4 = new DataTable();
+                DataRow dt4_row = dt4.NewRow();
+                dt4_row = dt3_row;
+
+                dt4.Rows.(dt4_row);
+                dataGridView1.DataSource = dt4_row;
+                */
             }
         }
 
@@ -188,6 +213,14 @@ namespace winform_SMS
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             data_Selected();
+        }
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Index > -1)
+            {
+                dataGridView1.DataSource = dt3;
+            }
         }
     }
 }

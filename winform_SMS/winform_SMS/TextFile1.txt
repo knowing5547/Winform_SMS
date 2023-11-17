@@ -1,0 +1,7 @@
+﻿- 2023-11-17
+	- Form2 / 주소록 수정 ver.2 (양지우)
+		1. 주소록 수정기능 완성
+		2. data_Selected() Form2_comboBox1 부분 오류 수정
+		3. 데이터 최신화 기능 추가 
+			// dataGridView1_CurrentCellDirtyStateChanged(this, null);
+		4. 기타 오류 수정

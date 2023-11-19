@@ -41,10 +41,10 @@ namespace winform_SMS
         public void setGroup(DataTable Form2_1Datatable)
         {
             dt2 = Form2_1Datatable;
-
+            comboBox1.Items.Clear();
             // comboBox1.DisplayMember = "Name";
             // comboBox1.ValueMember = "Num";
-
+            
             for (int i = 0; i < dt2.Rows.Count; i++)
             {
                 for (int j = 1; j < 2; j++)
@@ -145,14 +145,12 @@ namespace winform_SMS
         }
 
         // 주소록 수정
-        // 11/17_12:59 이어서하기
         private void button9_Click(object sender, EventArgs e)
         {
             if (TextCheck() == true)
             {
                 // MessageBox.Show(""+ID_Get); // ID_Get 값 제대로 가져오나 테스트용
 
-                // 1. foreach로 
                 DataRow dt3_row = dt3.Rows[ID_Get];
                 dt3_row["이름"] = textBox1.Text;
                 dt3_row["전화번호"] = textBox2.Text;
@@ -161,15 +159,6 @@ namespace winform_SMS
 
                 // 데이터 최신화
                 dataGridView1_CurrentCellDirtyStateChanged(this, null);
-
-                /*
-                DataTable dt4 = new DataTable();
-                DataRow dt4_row = dt4.NewRow();
-                dt4_row = dt3_row;
-
-                dt4.Rows.(dt4_row);
-                dataGridView1.DataSource = dt4_row;
-                */
             }
         }
 
@@ -202,7 +191,9 @@ namespace winform_SMS
         private void button6_Click(object sender, EventArgs e)
         {
             Form2_1 _Form2_1 = new Form2_1(this);
+            _Form2_1.dt2_Groupdata1(dt2);
             _Form2_1.ShowDialog();
+
 
         }
         public int ID_get

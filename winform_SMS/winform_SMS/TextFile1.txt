@@ -5,3 +5,16 @@
 		3. 데이터 최신화 기능 추가 
 			// dataGridView1_CurrentCellDirtyStateChanged(this, null);
 		4. 기타 오류 수정
+
+- 2023-11-18
+	- Fomr2 / 주소록 수정 ver.3 (양지우)
+	1. Form2_1 킬때 Form2 값 넘기기 (Form2_1에서 받아온 그룹명 dt가 Form2_1을 껏다가 켰을때 아예 없는상태가 되버림)
+	
+
+
+
+
+	---
+	- 만들어야 할 기능
+		1. Form2의 정보를 Form3으로 옮기기 (Form2 -> Form1 -> Form3 순으로 이루어질것 같음)
+		2. 그동안 만든 코드들간의 관계 + 코드설명 굿노트에 관계도 임시로 적어서 githiub

@@ -11,12 +11,14 @@ using System.Windows.Forms;
 using Google.Cloud.Firestore;
 using System.Collections;
 using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.Remoting.Messaging;
 
 namespace winform_SMS
 {
     public partial class Form2_1 : Form
     {
         DataTable dt1 = new DataTable();
+        DataTable dt1_Load = new DataTable();
         FirestoreDb db;
         int i = 0;
         Form2 _Form2;
@@ -28,14 +30,48 @@ namespace winform_SMS
             _Form2 = _Form2_Data;
         }
 
-        // dt 기본 설정
-        void dgv1Data()
+       public void dt2_Groupdata1(DataTable dt)
         {
-            dt1.Columns.Clear();
+            MessageBox.Show("Form2의 데이터를 불러왔습니다.");
+            dt1_Load = dt;
+            // dataGridView1.DataSource = dt1;
+        }
+
+        /*
+        public void dt2_Groupdata2()
+        {
+            foreach (DataRow row in dt1.Rows)
+            {
+                dataGridView1.Rows.Add(row);
+            }
+
+            dataGridView1.DataSource = dt1;
+        }
+        */
+
+        // dt 기본 설정
+        public void dgv1Data()
+        {
             dt1.Columns.Add("번호");
             dt1.Columns.Add("그룹");
             dataGridView1.DataSource = dt1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            DataRow row = dt1.NewRow();
+
+            // dt1_Load.Rows.Count > 0 <-- 처음에 Form2_1을 열 때는 dt1_Load 안에 요소 존재 X
+            // 해결법 구색
+            // for문을 dt1_Load.Rows.Count 만큼 돌려주고 각 row에 해당 dt1_Load의 값을 넣어주면 되는데
+            if (dt1_Load.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt1_Load.Rows.Count; i++)
+                {
+                    row["번호"] = dt1_Load.Rows[i][0];
+                    row["그룹"] = dt1_Load.Rows[i][1];
+                    dt1.Rows.Add(row.ItemArray);
+                    dataGridView1.DataSource = dt1;
+                }
+            }
 
         }
 
@@ -50,6 +86,8 @@ namespace winform_SMS
                 db = FirestoreDb.Create("(default)");
 
                 dgv1Data();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)

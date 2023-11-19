@@ -208,6 +208,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="TextFile1.txt" />
     <Content Include="winformsms-firebase-adminsdk-7dyve-b38ad43492.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

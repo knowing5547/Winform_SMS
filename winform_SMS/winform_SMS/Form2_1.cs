@@ -32,22 +32,8 @@ namespace winform_SMS
 
        public void dt2_Groupdata1(DataTable dt)
         {
-            MessageBox.Show("Form2의 데이터를 불러왔습니다.");
             dt1_Load = dt;
-            // dataGridView1.DataSource = dt1;
         }
-
-        /*
-        public void dt2_Groupdata2()
-        {
-            foreach (DataRow row in dt1.Rows)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-
-            dataGridView1.DataSource = dt1;
-        }
-        */
 
         // dt 기본 설정
         public void dgv1Data()
@@ -127,17 +113,6 @@ namespace winform_SMS
             int ID = dataGridView1.CurrentRow.Index;
             DataRow row = dt1.Rows[ID];
             row.Delete();
-
-            /*
-            // 특정 행이 삭제될 시 번호칸을 1부터 끝까지 돌리기
-            for(int j = 1; j < dt.Rows.Count; j++)
-            {
-                dt.Rows["번호"].clear();
-                row["번호"] = j;
-                dt.Rows.Add(row);
-                dataGridView1.DataSource = dt;
-            }
-            */
 
         }
 

@@ -18,10 +18,25 @@ namespace winform_SMS
         int ID_Get = 0;
         DataTable dt2 = new DataTable();
         DataTable dt3 = new DataTable();
+        DataTable dt4 = new DataTable();
+        DataTable dt2_Load = new DataTable();
+        DataTable dt3_Load = new DataTable();
+        Form1 _Form1;
 
-        public Form2()
+        public Form2(Form1 _Form1_Data)
         {
             InitializeComponent();
+            _Form1 = _Form1_Data;
+        }
+
+        public void dt3_Groupdata1(DataTable dt)
+        {
+            dt3_Load = dt;
+        }
+
+        public void dt2_Groupdata1(DataTable dt)
+        {
+            dt2_Load = dt;
         }
 
         // DataGridView1 기본 값 정리
@@ -34,6 +49,42 @@ namespace winform_SMS
             dt3.Columns.Add("그룹");
             dataGridView1.DataSource = dt3;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dt2.Columns.Add("번호");
+            dt2.Columns.Add("그룹");
+
+
+            DataRow row = dt3.NewRow();
+            DataRow row2 = dt2.NewRow();
+
+            if (dt3_Load.Rows.Count > 0 && dt2_Load.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt3_Load.Rows.Count; i++)
+                {
+                    row["이름"] = dt3_Load.Rows[i][0];
+                    row["전화번호"] = dt3_Load.Rows[i][1];
+                    row["이메일"] = dt3_Load.Rows[i][2];
+                    row["그룹"] = dt3_Load.Rows[i][3];
+                    dt3.Rows.Add(row.ItemArray);
+                    dataGridView1_CurrentCellDirtyStateChanged(this, null); 
+                }
+                
+                for (int i = 0; i < dt2_Load.Rows.Count; i++)
+                {
+                    row2["번호"] = dt2_Load.Rows[i][0];
+                    row2["그룹"] = dt2_Load.Rows[i][1];
+                    dt2.Rows.Add(row2.ItemArray);
+                }
+
+                for (int i = 0; i < dt2.Rows.Count; i++)
+                {
+                    for (int j = 1; j < 2; j++)
+                    {
+                        string strName = Convert.ToString(dt2.Rows[i][j]);
+                        comboBox1.Items.Add(strName);
+                    }
+                }
+            }
         }
 
 
@@ -42,8 +93,7 @@ namespace winform_SMS
         {
             dt2 = Form2_1Datatable;
             comboBox1.Items.Clear();
-            // comboBox1.DisplayMember = "Name";
-            // comboBox1.ValueMember = "Num";
+
             
             for (int i = 0; i < dt2.Rows.Count; i++)
             {
@@ -101,9 +151,9 @@ namespace winform_SMS
                             // 성공
                             for (int p = 0; p < dt2.Rows.Count; p++)
                             {
-                                if (cb_Value == dt2.Rows[p][1])
+                                if (cb_Value == dt2.Rows[p][1].ToString())
                                 {
-                                    this.comboBox1.SelectedIndex = p;
+                                        this.comboBox1.SelectedIndex = p;
                                 }
                             }
                         }
@@ -212,6 +262,16 @@ namespace winform_SMS
             {
                 dataGridView1.DataSource = dt3;
             }
+        }
+
+        // 확인 (창닫기)
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = dt3;
+            dt4 = dt3;
+            _Form1.setAddress(dt4);
+            _Form1.setGroup(dt2);
+            this.Close();
         }
     }
 }
